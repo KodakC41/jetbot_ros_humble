@@ -34,13 +34,13 @@ ros2 launch jetbot_ros gazebo_world.launch.py
 
 ### Headless Steps:
 
-1. Xvfb :1 -screen 0 1024x768x24
-2. export DISPLAY=:1
-3. gazebo_ros_world (from ~/.bashrc)
-4. run_robot (from ~/.bashrc)
-5. ros2 topic list
-6. export DISPLAY=192.168.0.6:0
-7. ros2 jetbot launch teleop_keyboard
+1. ```Xvfb :1 -screen 0 1024x768x24```
+2. ```export DISPLAY=:1```
+3. ```gazebo_ros_world (from ~/.bashrc)```
+4. ```run_robot (from ~/.bashrc)```
+5. ```ros2 topic list```
+6. ```export DISPLAY=192.168.0.6:0```
+7. ```ros2 jetbot launch teleop_keyboard```
 
 You will see:
 ```bash
