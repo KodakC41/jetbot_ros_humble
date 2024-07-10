@@ -46,35 +46,6 @@ gazebo_ros_world (from ~/.bashrc)
 run_robot (from ~/.bashrc)
 ```
 
-#### Step Five:
-Verify Topics are working:
-``` bash
-ros2 topic list
-```
-output:
-```bash
-root@0d4b3a3e2ad1:/home/ros2_ws# ros2 topic list
-/clock
-/jetbot/camera/camera_info
-/jetbot/camera/image_raw
-/jetbot/cmd_vel
-/jetbot/odom
-/parameter_events
-/performance_metrics
-/rosout
-/tf
-```
-
-#### Step Six:
-``` bash
-export DISPLAY=192.168.0.6:0
-```
-
-
-``` bash
-ros2 jetbot launch teleop_keyboard
-```
-
 You will see:
 ```bash
 root@0d4b3a3e2ad1:/home/ros2_ws# gazebo_ros_world
@@ -115,6 +86,36 @@ AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No 
 [INFO] [1720575787.666224209] [jetbot.diff_drive]: Publishing wheel transforms between [chassis], [left_wheel_hinge] and [right_wheel_hinge]
 [Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/pose/local/info, deleting message. This warning is printed only once.
 [Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/physics/contacts, deleting message. This warning is printed only once.
+```
+
+
+#### Step Five:
+Verify Topics are working:
+``` bash
+ros2 topic list
+```
+output:
+```bash
+root@0d4b3a3e2ad1:/home/ros2_ws# ros2 topic list
+/clock
+/jetbot/camera/camera_info
+/jetbot/camera/image_raw
+/jetbot/cmd_vel
+/jetbot/odom
+/parameter_events
+/performance_metrics
+/rosout
+/tf
+```
+
+#### Step Six:
+``` bash
+export DISPLAY=192.168.0.6:0
+```
+
+
+``` bash
+ros2 jetbot launch teleop_keyboard
 ```
 
 
