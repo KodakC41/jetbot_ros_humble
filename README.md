@@ -1,15 +1,7 @@
 # jetbot_ros
 ROS2 nodes and Gazebo model for NVIDIA JetBot with Jetson Nano
 
-> note:  if you want to use ROS Melodic, see the [`melodic`](https://github.com/dusty-nv/jetbot_ros/tree/melodic) branch
-
-### Start the JetBot ROS2 Foxy container
-
-``` bash
-git clone https://github.com/dusty-nv/jetbot_ros
-cd jetbot_ros
-docker/run.sh
-```
+Uses ROS2 Humble
  
 ### Run JetBot
 
