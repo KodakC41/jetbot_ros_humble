@@ -34,29 +34,50 @@ ros2 launch jetbot_ros gazebo_world.launch.py
 
 ### Headless Steps:
 
+#### Step One:
 ``` bash
 Xvfb :1 -screen 0 1024x768x24
 ```
 
+#### Step Two:
 ``` bash
 export DISPLAY=:1
 ```
 
+#### Step Three:
 ``` bash
 gazebo_ros_world (from ~/.bashrc)
 ```
 
+#### Step Four:
 ``` bash
 run_robot (from ~/.bashrc)
 ```
 
+#### Step Five:
+Verify Topics are working:
 ``` bash
 ros2 topic list
 ```
+output:
+```bash
+root@0d4b3a3e2ad1:/home/ros2_ws# ros2 topic list
+/clock
+/jetbot/camera/camera_info
+/jetbot/camera/image_raw
+/jetbot/cmd_vel
+/jetbot/odom
+/parameter_events
+/performance_metrics
+/rosout
+/tf
+```
 
+#### Step Six:
 ``` bash
 export DISPLAY=192.168.0.6:0
 ```
+
 
 ``` bash
 ros2 jetbot launch teleop_keyboard
