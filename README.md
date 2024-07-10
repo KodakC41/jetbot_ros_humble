@@ -32,6 +32,61 @@ Otherwise, see the [`Launch Gazebo`](#launch-gazebo) section below to run the si
 ros2 launch jetbot_ros gazebo_world.launch.py
 ```
 
+You will see:
+```bash
+(base) chris@Chriss-MBP-2 jetbot_ros % docker run -it -v="/tmp/.gazebo/:/root/.gazebo/"  --env DISPLAY=host.docker.internal:0 --env QT_X11_NO_MITSHM=1  --volume /tmp/.X11-unix:/tmp/.X11-unix --name=humbl2 jetbot_foxy_ros_cpu:v3.5.0
+root@c56a374b1a00:/home/ros2_ws# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 67170598AF249743
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+Executing: /tmp/apt-key-gpghome.ey4pEl0gAv/gpg.1.sh --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 67170598AF249743
+gpg: key 67170598AF249743: "OSRF Repository (OSRF Repository GPG key) <osrfbuild@osrfoundation.org>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+root@c56a374b1a00:/home/ros2_ws# export DISPLAY=:1
+root@c56a374b1a00:/home/ros2_ws# Xvfb :1 -screen 0 1024x768x24
+^Croot@c56a374b1a00:/home/ros2_ws# echo $DISPLAY
+:1
+root@c56a374b1a00:/home/ros2_ws# gazebo_ros_world 
+Gazebo multi-robot simulator, version 11.10.2
+Copyright (C) 2012 Open Source Robotics Foundation.
+Released under the Apache 2 License.
+http://gazebosim.org
+
+[Msg] Waiting for master.
+[Msg] Connected to gazebo master @ http://127.0.0.1:11345
+[Msg] Publicized address: 172.17.0.3
+[Err] [RenderEngine.cc:749] Can't open display: :1
+[Wrn] [RenderEngine.cc:89] Unable to create X window. Rendering will be disabled
+[Wrn] [RenderEngine.cc:292] Cannot initialize render engine since render path type is NONE. Ignore this warning ifrendering has been turned off on purpose.
+[Wrn] [ModelDatabase.cc:340] Getting models from[http://models.gazebosim.org/]. This may take a few seconds.
+[Wrn] [FuelModelDatabase.cc:313] URI not supported by Fuel [model://ground_plane_grass]
+[Wrn] [SystemPaths.cc:459] File or path does not exist [""] [model://ground_plane_grass]
+[Wrn] [FuelModelDatabase.cc:313] URI not supported by Fuel [model://dirt_path_curves]
+[Wrn] [SystemPaths.cc:459] File or path does not exist [""] [model://dirt_path_curves]
+Error Code 12 Msg: Unable to find uri[model://ground_plane_grass]
+Error Code 12 Msg: Unable to find uri[model://dirt_path_curves]
+[Msg] Loading world file [/home/ros2_ws/install/jetbot_ros/share/jetbot_ros/worlds/dirt_path_curves.world]
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1334:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5701:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2664:(snd_pcm_open_noupdate) Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[Err] [OpenAL.cc:84] Unable to open audio device[default]
+ Audio will be disabled.
+[Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/physics/contacts, deleting message. This warning is printed only once.
+[Err] [CameraSensor.cc:125] Unable to create CameraSensor. Rendering is disabled.
+[INFO] [1720568915.521379119] [jetbot.diff_drive]: Wheel pair 1 separation set to [0.200000m]
+[INFO] [1720568915.522328780] [jetbot.diff_drive]: Wheel pair 1 diameter set to [0.200000m]
+[INFO] [1720568915.525701945] [jetbot.diff_drive]: Subscribed to [/jetbot/cmd_vel]
+[INFO] [1720568915.535179800] [jetbot.diff_drive]: Advertise odometry on [/jetbot/odom]
+[INFO] [1720568915.545728287] [jetbot.diff_drive]: Publishing odom transforms between [odom] and [chassis]
+[INFO] [1720568915.545936077] [jetbot.diff_drive]: Publishing wheel transforms between [chassis], [left_wheel_hinge] and [right_wheel_hinge]
+```
+
+
 Then to run the following commands, launch a new terminal session into the container:
 
 ``` bash
