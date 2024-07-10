@@ -34,28 +34,37 @@ ros2 launch jetbot_ros gazebo_world.launch.py
 
 ### Headless Steps:
 
-1. ```Xvfb :1 -screen 0 1024x768x24```
-2. ```export DISPLAY=:1```
-3. ```gazebo_ros_world (from ~/.bashrc)```
-4. ```run_robot (from ~/.bashrc)```
-5. ```ros2 topic list```
-6. ```export DISPLAY=192.168.0.6:0```
-7. ```ros2 jetbot launch teleop_keyboard```
+``` bash
+Xvfb :1 -screen 0 1024x768x24
+```
+
+``` bash
+export DISPLAY=:1
+```
+
+``` bash
+gazebo_ros_world (from ~/.bashrc)
+```
+
+``` bash
+run_robot (from ~/.bashrc)
+```
+
+``` bash
+ros2 topic list
+```
+
+``` bash
+export DISPLAY=192.168.0.6:0
+```
+
+``` bash
+ros2 jetbot launch teleop_keyboard
+```
 
 You will see:
 ```bash
-(base) chris@Chriss-MBP-2 jetbot_ros % docker run -it -v="/tmp/.gazebo/:/root/.gazebo/"  --env DISPLAY=host.docker.internal:0 --env QT_X11_NO_MITSHM=1  --volume /tmp/.X11-unix:/tmp/.X11-unix --name=humbl2 jetbot_foxy_ros_cpu:v3.5.0
-root@c56a374b1a00:/home/ros2_ws# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 67170598AF249743
-Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
-Executing: /tmp/apt-key-gpghome.ey4pEl0gAv/gpg.1.sh --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 67170598AF249743
-gpg: key 67170598AF249743: "OSRF Repository (OSRF Repository GPG key) <osrfbuild@osrfoundation.org>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
-root@c56a374b1a00:/home/ros2_ws# export DISPLAY=:1
-root@c56a374b1a00:/home/ros2_ws# Xvfb :1 -screen 0 1024x768x24
-^Croot@c56a374b1a00:/home/ros2_ws# echo $DISPLAY
-:1
-root@c56a374b1a00:/home/ros2_ws# gazebo_ros_world 
+root@0d4b3a3e2ad1:/home/ros2_ws# gazebo_ros_world
 Gazebo multi-robot simulator, version 11.10.2
 Copyright (C) 2012 Open Source Robotics Foundation.
 Released under the Apache 2 License.
@@ -63,10 +72,7 @@ http://gazebosim.org
 
 [Msg] Waiting for master.
 [Msg] Connected to gazebo master @ http://127.0.0.1:11345
-[Msg] Publicized address: 172.17.0.3
-[Err] [RenderEngine.cc:749] Can't open display: :1
-[Wrn] [RenderEngine.cc:89] Unable to create X window. Rendering will be disabled
-[Wrn] [RenderEngine.cc:292] Cannot initialize render engine since render path type is NONE. Ignore this warning ifrendering has been turned off on purpose.
+[Msg] Publicized address: 172.17.0.2
 [Wrn] [ModelDatabase.cc:340] Getting models from[http://models.gazebosim.org/]. This may take a few seconds.
 [Wrn] [FuelModelDatabase.cc:313] URI not supported by Fuel [model://ground_plane_grass]
 [Wrn] [SystemPaths.cc:459] File or path does not exist [""] [model://ground_plane_grass]
@@ -86,14 +92,16 @@ ALSA lib pcm.c:2664:(snd_pcm_open_noupdate) Unknown PCM default
 AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
 [Err] [OpenAL.cc:84] Unable to open audio device[default]
  Audio will be disabled.
+[Wrn] [Event.cc:61] Warning: Deleting a connection right after creation. Make sure to save the ConnectionPtr from a Connect call
+[INFO] [1720575787.546256167] [jetbot.camera_controller]: Publishing camera info to [/jetbot/camera/camera_info]
+[INFO] [1720575787.656197366] [jetbot.diff_drive]: Wheel pair 1 separation set to [0.200000m]
+[INFO] [1720575787.656454090] [jetbot.diff_drive]: Wheel pair 1 diameter set to [0.200000m]
+[INFO] [1720575787.658189287] [jetbot.diff_drive]: Subscribed to [/jetbot/cmd_vel]
+[INFO] [1720575787.662000207] [jetbot.diff_drive]: Advertise odometry on [/jetbot/odom]
+[INFO] [1720575787.666091510] [jetbot.diff_drive]: Publishing odom transforms between [odom] and [chassis]
+[INFO] [1720575787.666224209] [jetbot.diff_drive]: Publishing wheel transforms between [chassis], [left_wheel_hinge] and [right_wheel_hinge]
+[Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/pose/local/info, deleting message. This warning is printed only once.
 [Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/physics/contacts, deleting message. This warning is printed only once.
-[Err] [CameraSensor.cc:125] Unable to create CameraSensor. Rendering is disabled.
-[INFO] [1720568915.521379119] [jetbot.diff_drive]: Wheel pair 1 separation set to [0.200000m]
-[INFO] [1720568915.522328780] [jetbot.diff_drive]: Wheel pair 1 diameter set to [0.200000m]
-[INFO] [1720568915.525701945] [jetbot.diff_drive]: Subscribed to [/jetbot/cmd_vel]
-[INFO] [1720568915.535179800] [jetbot.diff_drive]: Advertise odometry on [/jetbot/odom]
-[INFO] [1720568915.545728287] [jetbot.diff_drive]: Publishing odom transforms between [odom] and [chassis]
-[INFO] [1720568915.545936077] [jetbot.diff_drive]: Publishing wheel transforms between [chassis], [left_wheel_hinge] and [right_wheel_hinge]
 ```
 
 
